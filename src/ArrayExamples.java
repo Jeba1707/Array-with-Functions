@@ -93,6 +93,7 @@ public class ArrayExamples {
         pattern8();
         pattern9();
         pattern10();
+        System.out.println();
         leftTrianglePattern();
         pyramidPattern();
         diamondPattern();
