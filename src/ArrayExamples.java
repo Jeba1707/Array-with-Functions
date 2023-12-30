@@ -1,22 +1,49 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class ArrayExamples {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-       int[] arr = {6,3,9,7,2,8,4};
+        System.out.print("Enter your  Array size :");
+        int size = input.nextInt();
+      int[] arr = new int[size];
+        System.out.print("Enter your Array elements : ");
 
-       printArray(arr);
+        for(int i = 0 ; i<arr.length ; i++) {
+            arr[i] = input.nextInt();
+        }
+            printArray(arr);
+        System.out.println("the array has duplicate values :"+duplicateElements(arr));
      System.out.println("Sum of array elements = "+getSum(arr));
+        System.out.printf("Avarage of array: %.2f",avarage(arr));
+        System.out.println();
        System.out.println("The largest element in Array ="+getMax(arr));
+
+        System.out.println("The second largest element in Array ="+secondMax(arr));
+       // System.out.println("the maximum of the array is "+max(arr));
+        System.out.println("the minimum of the array is "+min(arr));
+        System.out.println("Even and Odd numbers of the Array :");
         checkEvenOrOdd(arr);
         System.out.print("reverse of the Array = ");
         reversedArray(arr);
-        System.out.println("factorial of 5 is : "+factorial(5));
-        System.out.println("factorial of 5 using recursion : "+fact(5));
+        System.out.print("which element you want to search in array :");
+        int key = sc.nextInt();
+        System.out.println("The element is in the array : "+linearSearch(arr,key));
+        System.out.println("the element is in the index "+binarySearch(arr,key));
+
+
+        System.out.print("Enter a number to calculate factorial :");
+        int num5 = input.nextInt();
+        System.out.println("factorial of "+num5+" is : "+factorial(num5));
+        System.out.println("factorial of "+num5+" using recursion : "+fact(num5));
+
         System.out.print("Enter your String to check palindrom or not :");
-        String s1 = input.nextLine();
+        String s1 = scan.nextLine();
         System.out.println("your string is "+checkPalindromOfString(s1));
         System.out.print("Enter any integer to check prime or not:");
         int number1 = input.nextInt();
@@ -31,15 +58,14 @@ public class ArrayExamples {
             System.out.print( fibonacciRecursion(i)+" ");
        }
         System.out.println();
-        System.out.print("which element you want to search in array :");
-        int key = input.nextInt();
-        System.out.println("The element is in the array : "+linearSearch(arr,key));
-        System.out.println("the key is in the index "+binarySearch(arr,key));
 
-        System.out.println("the array has duplicate values :"+duplicateElements(arr));
 
-        vowelsConsonents("encapsulation");
-        table(11);
+        System.out.println("Enter a string to calculate vowels and consonents :");
+        String s6 = sc.nextLine();
+        vowelsConsonents(s6);
+        System.out.println("Give a number to print multiplication table :");
+        int table = input.nextInt();
+        table(table);
 
         int[][] mt1 = {
                 {1,2,3,4,5},
@@ -57,7 +83,7 @@ public class ArrayExamples {
         };
 
         int[][] sum=matrixAdd(mt1,mt2);
-        System.out.println("sum = ");
+        System.out.println("sum of two 5X5 matrix = ");
         for (int i = 0;i< 5; i++){
             for (int j = 0;j< 5; j++) {
                 System.out.print(sum[i][j]+" ");
@@ -66,7 +92,7 @@ public class ArrayExamples {
             System.out.println();
 
         }
-        System.out.printf("Avarage of array: %.2f",avarage(arr));
+
 
         System.out.println();
         System.out.print("Enter any year to check leap year or not :");
@@ -74,15 +100,14 @@ public class ArrayExamples {
         leapYear(year);
 
         System.out.print("enter any string to reverse :");
-        String s2 = input.nextLine();
+        String s2 = sc.nextLine();
         System.out.println("after reverse :"+reverseString(s2));
         System.out.print("Enter a number to check Armstrong or not :");
         int number = input.nextInt();
         System.out.print(number+" is ");
         checkArmstrong(number);
 
-        System.out.println("the maximum of the array is "+max(arr));
-        System.out.println("the minimum of the array is "+min(arr));
+
         pattern1();
         pattern2();
         pattern3();
@@ -97,6 +122,33 @@ public class ArrayExamples {
         leftTrianglePattern();
         pyramidPattern();
         diamondPattern();
+        System.out.println();
+
+        System.out.println("Enter element to calculate simple interest .");
+        System.out.print("Enter principal : ");
+        int princ = sc.nextInt();
+        System.out.print("Enter rate : ");
+        float r = sc.nextFloat();
+        System.out.print("Enter time in year : ");
+        int t = sc.nextInt();
+
+        System.out.printf("interest = %.2f",simpleInterest(princ,r,t));
+        System.out.println();
+        System.out.print("Enter celsius temp :");
+        float cel =input.nextFloat();
+        System.out.println("Fahrenheit temp :"+convertTempCelsToFahr(cel));
+        System.out.print("Enter Fahrenheit temp :");
+        float far =input.nextFloat();
+        System.out.println("celsius temp :"+convertTempFahrToCels(far));
+        System.out.print("Enter any character to check its type :");
+        char ch = input.next().charAt(0);
+        System.out.println();
+        String res = charType(ch);
+        System.out.println("your character is "+res);
+
+        System.out.print("Give a string containing both letters and numbers = ");
+        String s3 = scan.nextLine();
+        System.out.println("Sum of all the numbers in String : "+sumOfNumbersInAString(s3));
 
     }
 
@@ -305,7 +357,7 @@ public class ArrayExamples {
         int vowelCount=0;
         int consonentCount=0;
         for (int i = 0;i<str.length();i++){
-            if (str.charAt(i)=='a' ||str.charAt(i)=='e' ||str.charAt(i)=='i' ||str.charAt(i)=='o' ||str.charAt(i)=='u' )
+            if (str.charAt(i)=='a' ||str.charAt(i)=='e' ||str.charAt(i)=='i' ||str.charAt(i)=='o' ||str.charAt(i)=='u' ||str.charAt(i)=='A'||str.charAt(i)=='E'||str.charAt(i)=='I'||str.charAt(i)=='O'||str.charAt(i)=='U' )
                 vowelCount++;
             else
                 consonentCount++;
@@ -656,5 +708,70 @@ public static void pattern8() {
         }
         return min ;
     }
+
+    //21. Calculate the simple interest for given principal, rate of interest, and time.
+    public static float simpleInterest(int principal,double rate,int time){
+
+        float interest = (float)(principal*rate*time)/100;
+        return interest;
+    }
+
+    //22. Write a program to convert temperatures from Celsius to Fahrenheit and vice versa.
+
+    public static float convertTempCelsToFahr(float cels){
+      float fahr = (float)(1.8*cels)+32;
+      return fahr;
+    }
+
+    public static float convertTempFahrToCels(float fahr){
+        float cels = (float)0.56*(fahr - 32);
+        return cels;
+    }
+
+
+    //23. Write a program that checks whether the input character is an uppercase letter, lowercase letter, a digit, or a special 24. character.
+     public static String charType(char ch ){
+         if (Character.isUpperCase(ch)) {
+             return "Uppercase Letter";
+         } else if (Character.isLowerCase(ch)) {
+             return "Lowercase Letter";
+         } else if (Character.isDigit(ch)) {
+             return "Digit";
+         } else {
+             return "Special Character";
+         }
+     }
+
+     //24. Write a program to find the second largest number in a given array.
+    public static int secondMax(int[] array){
+        int max = max(array);
+        int max2 = array[0];
+        for (int i = 1;i< array.length;i++){
+
+            if (array[i]>max2 && array[i]<max){
+
+                max2= array[i];
+
+            }
+        }
+        return max2 ;
+    }
+
+    //25. Given a string containing both letters and numbers, find the sum of all the numbers in the string.
+    public static int sumOfNumbersInAString(String str){
+    int sum = 0 ;
+    char character;
+    int digit;
+    for (int i = 0;i<str.length();i++){
+        character=str.charAt(i);
+        if(Character.isDigit(character)){
+            digit = Integer.parseInt(String.valueOf(character));
+            sum= sum+digit;
+
+        }
+    }
+     return sum;
+    }
+
 }
 
